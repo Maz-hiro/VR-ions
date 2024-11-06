@@ -9,13 +9,17 @@
     <script src="https://cdn.rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.min.js"></script>
 </head>
 <body style="margin: 0; overflow: hidden;">
+    <!-- Add a hidden video element for better compatibility -->
+    <video id="video" src="https://raw.githubusercontent.com/Maz-hiro/VR-ions/main/Membrane%20Transport,%20Animation.mp4" 
+           autoplay loop crossorigin="anonymous" style="display: none;"></video>
+           
     <!-- A-Frame scene for AR -->
     <a-scene embedded arjs="sourceType: webcam;">
         <!-- Hiro marker for detecting the marker pattern -->
         <a-marker preset="hiro">
-            <!-- Video element that will play when Hiro marker is detected -->
+            <!-- Use the hidden video as a texture for the A-Frame video element -->
             <a-video 
-                src="https://github.com/Maz-hiro/VR-ions/blob/main/Membrane%20Transport%2C%20Animation.mp4"
+                src="#video"
                 width="4" height="2.25" 
                 position="0 1 0">
             </a-video>
