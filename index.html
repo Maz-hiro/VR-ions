@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
-        <a-entity
-          position="1 1 1"
-          scale="0.11 0.11 0.11"
-          gltf-model="model.gltf">
-	 </a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiro AR Video</title>
+</head>
+<body>
+    <div id="ar-container">
+        <!-- Embed the video inside the AR scene -->
+        <video id="video" controls autoplay loop>
+            <source src="path/to/Membrane Transport, Animation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script src="path_to_hiro_framework.js"></script>
+    <script>
+        // Initialize Hiro AR framework (you need to adapt this to how Hiro is set up)
+        Hiro.AR.init({
+            container: document.getElementById('ar-container')
+        });
+    </script>
+</body>
 </html>
