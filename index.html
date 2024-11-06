@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiro AR Video</title>
+    <!-- Load A-Frame and AR.js libraries -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.min.js"></script>
 </head>
-<body style="margin : 0; overflow: hidden;">
-    <!-- A-Frame scene -->
-    <a-scene embedded arjs>
-        <!-- Hiro marker -->
+<body style="margin: 0; overflow: hidden;">
+    <!-- A-Frame scene for AR -->
+    <a-scene embedded arjs="sourceType: webcam;">
+        <!-- Hiro marker for detecting the marker pattern -->
         <a-marker preset="hiro">
-            <!-- Video texture -->
+            <!-- Video element that will play when Hiro marker is detected -->
             <a-video 
                 src="https://github.com/Maz-hiro/VR-ions/blob/main/Membrane%20Transport%2C%20Animation.mp4"
                 width="4" height="2.25" 
@@ -20,7 +21,7 @@
             </a-video>
         </a-marker>
         
-        <!-- Camera -->
+        <!-- Camera for viewing AR scene -->
         <a-entity camera></a-entity>
     </a-scene>
 </body>
