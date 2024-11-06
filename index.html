@@ -3,23 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiro AR Video</title>
+    <title>Hiro AR with Video</title>
+    <script src="https://cdn.hiro.io/hiro.js"></script> <!-- Make sure Hiro.js is included -->
 </head>
 <body>
+    <!-- AR Scene Container -->
     <div id="ar-container">
-        <!-- Embed the video inside the AR scene -->
-        <video id="video" controls autoplay loop>
-            <source src="path/to/Membrane Transport, Animation.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <div id="marker" style="width: 100%; height: 100%;"></div> <!-- Placeholder for marker -->
     </div>
 
-    <script src="path_to_hiro_framework.js"></script>
     <script>
-        // Initialize Hiro AR framework (you need to adapt this to how Hiro is set up)
-        Hiro.AR.init({
-            container: document.getElementById('ar-container')
+        // Initialize Hiro AR
+        Hiro.init({
+            container: document.getElementById('ar-container'),
+            marker: 'hiro', // This tells Hiro to look for a Hiro marker
+            onMarkerFound: function () {
+                showVideo(); // Function to display the video when marker is found
+            }
         });
+
+        // Function to show video once Hiro marker is detected
+        function showVideo() {
+            // Create a video element
+            var videoElement = document.createElement('video');
+            videoElement.setAttribute('controls', '');
+            videoElement.setAttribute('autoplay', '');
+            videoElement.setAttribute('loop', '');
+            videoElement.style.position = 'absolute';
+            videoElement.style.top = '50%';
+            videoElement.style.left = '50%';
+            videoElement.style.transform = 'translate(-50%, -50%)';
+            videoElement.style.width = '80%';  // Adjust size as needed
+            videoElement.innerHTML = '<source src="path/to/Membrane Transport, Animation.mp4" type="video/mp4">';
+
+            // Append the video element to the body
+            document.body.appendChild(videoElement);
+        }
     </script>
 </body>
 </html>
